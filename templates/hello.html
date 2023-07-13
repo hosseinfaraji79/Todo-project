@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Hello {% endblock title %}
+
+{% block fj %}
     {% if name == 'admin' %}
         <p> Sorry baby ...</p>
     {% endif %}
     <h2>Hello dear {{ name }} ...</h2>
-
-</body>
-</html>
+{% endblock fj %}
