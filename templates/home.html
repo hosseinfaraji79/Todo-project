@@ -4,6 +4,6 @@
 
 {% block fj %}
     {% for todo in todos %}
-        <a href="/detail/{{todo.id}}">{{ todo.title }}</a><br/>
+        <a href="{% url 'details' todo.id %}">{{ todo.title }}</a><br/>
     {% endfor %}
 {% endblock fj %}
