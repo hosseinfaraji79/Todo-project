@@ -17,10 +17,18 @@ def detail(request , todo_id):
 
 def delete(request , todo_id):
     Todo.objects.get(id = todo_id).delete()
-    messages.success(request , 'با موفقیت انجام شد' , 'success')
+    messages.warning(request , 'حذف با موفقیت انجام شد' , 'warning')
     return redirect('home')
 
 
 def create(request):
-    form = TodoCreateForm()
+    if request.method == 'POST':
+        form = TodoCreateForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            Todo.objects.create(title=cd['title'] , body=cd['body'] , created=cd['created'])
+            messages.success(request , 'شما فایل جدید ایجاد کردید' , 'success')
+            return redirect('home')
+    else:
+        form = TodoCreateForm()
     return render(request , 'create.html' , {'form':form})
