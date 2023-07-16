@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from .models import Todo
 from django.contrib import messages
-from .forms import TodoCreateForm
+from .forms import TodoCreateForm , TodoUpdateForm
 
 # Create your views here.
 
@@ -32,3 +32,13 @@ def create(request):
     else:
         form = TodoCreateForm()
     return render(request , 'create.html' , {'form':form})
+
+
+
+
+def update(request, todo_id):
+    if request.method == 'POST':
+        pass
+    else:
+        form = TodoUpdateForm()
+    return render(request , 'update.html' , {'form':form})
